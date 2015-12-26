@@ -38,20 +38,23 @@
 
             var needToClick = false;
             var clickReasons = [];
-            $J("a.app_tag").each(function () {
-                var appTag = $J(this).text().trim();
-                if ($J.inArray(appTag, unwantedGames) > -1) {
-                    //console.log("Game will be marked because of: " + appTag);
-                    clickReasons.push(appTag);
-                    needToClick = true;
-                }
-            });
-            
-            if (needToClick) {
-                console.log("Clicking on the 'Not Interested' Button...");
-                $J('.queue_control_button.queue_btn_ignore .queue_btn_inactive').click();
-                if (showReasons) {
-                    $J('.queue_control_button.queue_btn_ignore .queue_btn_inactive').parent().append('<span> ' + clickReasons.join(", ") + "</span>");
+			
+            if ($J("div#add_to_wishlist_area_success").is(":hidden")) { // fix the blacklisting of games on wishlist
+                $J("a.app_tag").each(function () {
+                    var appTag = $J(this).text().trim();
+                    if ($J.inArray(appTag, unwantedGames) > -1) {
+                        //console.log("Game will be marked because of: " + appTag);
+                        clickReasons.push(appTag);
+                        needToClick = true;
+                    }
+                });
+
+                if (needToClick) {
+                    console.log("Clicking on the 'Not Interested' Button...");
+                    $J('.queue_control_button.queue_btn_ignore .queue_btn_inactive').click();
+                    if (showReasons) {
+                        $J('.queue_control_button.queue_btn_ignore .queue_btn_inactive').parent().append('<span> ' + clickReasons.join(", ") + "</span>");
+                    }
                 }
             }
             
