@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Steam Auto Clicker
-// @version      0.2
+// @version      0.3
 // @description  Click 'Not Interested' automatically for games in specified user tags.
 // @author       tech_engineer / maestro_it
 // @match        *://store.steampowered.com/app/*
